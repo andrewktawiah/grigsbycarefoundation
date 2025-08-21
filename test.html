@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Partners - Scholarship Program</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #F8ffe5;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .bheader {
+            text-align: center;
+            padding: 30px;
+            background: #06d6a0;
+            color: white;
+        }
+        
+        .bheader h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bheader p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .universities-section {
+            height: 50vh;
+            padding: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .marquee {
+            display: flex;
+            animation: marquee-scroll 30s linear infinite;
+            padding: 20px 0;
+        }
+        
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+        
+        .university-card {
+            width: 200px;
+            height: 200px;
+            margin: 0 20px;
+            perspective: 1000px;
+            flex-shrink: 0;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+        
+        .university-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card-front {
+            background: linear-gradient(135deg, #06d6a0, #1b9aaa);
+        }
+        
+        .card-back {
+            background: linear-gradient(135deg, #1b9aaa, #06d6a0);
+            color: black;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .card-back h3 {
+            background-color: white;
+            font-size: 18px;
+            margin-top: 15px;
+            color: black;
+            padding: 10px;
+            
+        }
+        
+        .university-logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: #06d6a0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #073b4c;
+            color: white;
+        }
+        
+        @keyframes marquee-scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        /* University-specific styles */
+        .ul-logo {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #d35656;
+        }
+        
+        .ameu-logo {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #0076b6;
+        }
+        
+        .umu-logo {
+            background: linear-gradient(135deg, #ffe259, #ffa751);
+            color: #d17c1a;
+        }
+        
+        .stella-logo {
+            background: linear-gradient(135deg, #c2e59c, #64b3f4);
+            color: #3a7bb3;
+        }
+        
+        .liu-logo {
+            background: linear-gradient(135deg, #7F00FF, #E100FF);
+            color: #7F00FF;
+        }
+        
+        .starz-logo {
+            background: linear-gradient(135deg, #FC466B, #3F5EFB);
+            color: #FC466B;
+        }
+        
+        .cuttington-logo {
+            background: linear-gradient(135deg, #3E5151, #DECBA4);
+            color: #3E5151;
+        }
+        
+        .tubman-logo {
+            background: linear-gradient(135deg, #f46b45, #eea849);
+            color: #c53d0f;
+        }
+        
+        @media (max-width: 768px) {
+            .bheader h1 {
+                font-size: 28px;
+            }
+            
+            .bheader p {
+                font-size: 16px;
+            }
+            
+            .university-card {
+                width: 150px;
+                height: 150px;
+                margin: 0 15px;
+            }
+            
+            .university-logo {
+                width: 80px;
+                height: 80px;
+                font-size: 30px;
+            }
+            
+            .card-back h3 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="coontainer">
+        <div class="bheader">
+            <h1>Partners Universities</h1>
+            <p>Where our scholarships are offered</p>
+        </div>
+        
+        <div class="universities-section">
+            <div class="marquee-container">
+                <div class="marquee">
+                    <!-- University of Liberia -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo ul-logo">
+                                 <img src="ul.png" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo ul-logo">
+                                     <img src="ul.png" alt="">
+                                </div>
+                                <h3>University of Liberia</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- African Methodist Episcopal University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo ameu-logo">
+                                  <img src="ameu.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo ameu-logo">
+                                   <img src="ameu.jpg" alt="">
+                                </div>
+                                <h3>African Methodist Episcopal University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- United Methodist University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo umu-logo">
+                                    <img src="umu.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo umu-logo">
+                                    <img src="umu.jpg" alt="">
+                                </div>
+                                <h3>United Methodist University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stella Maris Polytechnic -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo stella-logo">
+                                    <img src="stel.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo stella-logo">
+                                   <img src="stel.jpg" alt="">
+                                </div>
+                                <h3>Stella Maris Polytechnic</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Liberian International University -->
+                    
+                    <!-- Starz University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo starz-logo">
+                                <img src="starz.png" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo starz-logo">
+                                    <img src="starz.png" alt="">
+                                </div>
+                                <h3>Starz University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cuttington University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo cuttington-logo">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo cuttington-logo">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <h3>Cuttington University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- William V.S. Tubman University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo tubman-logo">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo tubman-logo">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>William V.S. Tubman University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Duplicate for seamless scrolling -->
+                    <!-- University of Liberia -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo ul-logo">
+                                     <img src="ul.png" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo ul-logo">
+                                     <img src="ul.png" alt="">
+                                </div>
+                                <h3>University of Liberia</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- African Methodist Episcopal University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo ameu-logo">
+                                     <img src="ameu.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo ameu-logo">
+                                    <img src="ameu.jpg" alt="">
+                                </div>
+                                <h3>African Methodist Episcopal University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- United Methodist University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo umu-logo">
+                                <img src="umu.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo umu-logo">
+                                    <img src="umu.jpg" alt="">
+                                </div>
+                                <h3>United Methodist University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stella Maris Polytechnic -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo stella-logo">
+                                    <img src="stel.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo stella-logo">
+                                   <img src="stel.jpg" alt="">
+                                </div>
+                                <h3>Stella Maris Polytechnic</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Starz University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo starz-logo">
+                                    <img src="starz.png" alt="">
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo starz-logo">
+                                    <img src="starz.png" alt="">
+                                </div>
+                                <h3>Starz University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cuttington University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo cuttington-logo">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo cuttington-logo">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <h3>Cuttington University</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- William V.S. Tubman University -->
+                    <div class="university-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="university-logo tubman-logo">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="university-logo tubman-logo">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <h3>William V.S. Tubman University</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2023 Minister Teklo Maxwell Grigsby II - Scholarship Program</p>
+        </div>
+    </div>
+
+    <script>
+        // Pause animation when hovering over individual cards
+        const cards = document.querySelectorAll('.university-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                document.querySelector('.marquee').style.animationPlayState = 'paused';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                document.querySelector('.marquee').style.animationPlayState = 'running';
+            });
+        });
+    </script>
+</body>
+</html>
